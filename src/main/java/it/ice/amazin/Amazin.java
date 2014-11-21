@@ -13,27 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Amazin {
-	public static void testItemFromXls() {
-		Config config = Config.getInstance();
-		List<Item> items = BrandsDistribution.getInstance().fromXls(
-				config.get(XLS_URI));
-		for (Item item : items) {
-			System.out.println(item.item_sku);
-		}
-	}
-
-	public static void testProduct2Xml() {
-		String path = "res/xml/Product.xml";
-		Product product = new Product();
-		Xml.getInstance().fromObject(product, path);
-	}
-
-	public static void testXml2Product() {
-		String path = "res/xml/ProductExample.xml";
-		Product product = Xml.getInstance().toProduct(path);
-		System.out.println(product);
-	}
-
 	private static List<Product> getProducts() {
 		Config config = Config.getInstance();
 		List<Product> products = new ArrayList<Product>();

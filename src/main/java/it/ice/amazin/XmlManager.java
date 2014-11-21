@@ -17,18 +17,18 @@ import com.amazonaws.mws.model.GetFeedSubmissionListResponse;
 import com.amazonaws.mws.model.GetFeedSubmissionResultResponse;
 import com.amazonaws.mws.model.SubmitFeedResponse;
 
-public class Xml {
+public class XmlManager {
 	private static JAXBContext jaxb;
-	private static Xml singleton;
+	private static XmlManager singleton;
 
-	public static Xml getInstance() {
+	public static XmlManager getInstance() {
 		if (singleton == null) {
-			singleton = new Xml();
+			singleton = new XmlManager();
 		}
 		return singleton;
 	}
 
-	private Xml() {
+	private XmlManager() {
 		try {
 			jaxb = JAXBContext.newInstance(Product.class, SubmitFeedResponse.class,
 					GetFeedSubmissionListResponse.class,

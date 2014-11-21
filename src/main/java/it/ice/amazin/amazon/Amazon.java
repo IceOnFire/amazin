@@ -8,7 +8,7 @@ import static it.ice.amazin.Config.AMAZON_MERCHANT_ID;
 import static it.ice.amazin.Config.AMAZON_SECRET_KEY;
 import static it.ice.amazin.Config.AMAZON_SERVICE_URL;
 import it.ice.amazin.Config;
-import it.ice.amazin.Xml;
+import it.ice.amazin.XmlManager;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -84,7 +84,7 @@ public class Amazon {
 			return null;
 		}
 
-		Xml.getInstance().fromObject(response, System.out);
+		XmlManager.getInstance().fromObject(response, System.out);
 
 		return response.getSubmitFeedResult().getFeedSubmissionInfo()
 				.getFeedSubmissionId();
@@ -103,9 +103,9 @@ public class Amazon {
 			return idList;
 		}
 
-		Xml.getInstance().fromObject(response,
+		XmlManager.getInstance().fromObject(response,
 				"res/xml/FeedSubmissionList_" + new Date().getTime() + ".xml");
-		Xml.getInstance().fromObject(response, System.out);
+		XmlManager.getInstance().fromObject(response, System.out);
 
 		if (!response.getGetFeedSubmissionListResult().isHasNext()) {
 			System.out.println("empty list");
@@ -135,11 +135,11 @@ public class Amazon {
 			return false;
 		}
 
-		Xml.getInstance().fromObject(
+		XmlManager.getInstance().fromObject(
 				response,
 				"res/xml/FeedSubmissionReport_" + submissionId + "_"
 						+ new Date().getTime() + ".xml");
-		Xml.getInstance().fromObject(response, System.out);
+		XmlManager.getInstance().fromObject(response, System.out);
 		
 		return response.isSetGetFeedSubmissionResultResult();
 	}
